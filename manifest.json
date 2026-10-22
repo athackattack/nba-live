@@ -23,5 +23,41 @@
    "type": "image/png",
    "purpose": "maskable"
   }
- ]
+ ],
+ "shortcuts": [
+  {
+   "name": "Scores",
+   "short_name": "Scores",
+   "url": "./?tab=scores",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Standings",
+   "short_name": "Standings",
+   "url": "./?tab=standings",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Fantasy",
+   "short_name": "Fantasy",
+   "url": "./?tab=fantasy",
+   "icons": [
+    {
+     "src": "icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ],
+ "id": "./"
 }

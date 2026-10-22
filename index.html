@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="NBA Live"><meta name="theme-color" id="tcol" content="#0b0f17"><meta name="color-scheme" content="dark light"><meta name="app-version" content="v10-20261022012105"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="NBA Live"><meta name="theme-color" id="tcol" content="#0b0f17"><meta name="color-scheme" content="dark light"><meta name="app-version" content="v11-20261022013333"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="manifest" href="manifest.json"><link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1320x2868.png"><link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1206x2622.png"><link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1290x2796.png"><link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1179x2556.png"><link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1284x2778.png"><link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1170x2532.png"><link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1125x2436.png"><link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1242x2688.png"><link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash-828x1792.png"><link rel="apple-touch-startup-image" media="(device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1080x2340.png"><link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash-750x1334.png"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash-640x1136.png">
 <title>NBA Live · Wolves of Wallstreet</title>
 <style>
 :root{--bg:#0b0f17;--card:#141b27;--card2:#1b2433;--txt:#e8edf5;--mut:#8a96a8;--acc:#ff6b1a;--live:#ff3b47;--gold:#f5c542;--win:#fff}
@@ -447,7 +447,37 @@ header.hx{padding-top:calc(8px + env(safe-area-inset-top));padding-left:max(10px
   .wb:hover{transform:translateY(-1px)}
   html.light .card:hover{border-color:rgba(13,20,38,.18);box-shadow:0 12px 26px rgba(13,20,38,.12)}
 }
-</style></head><body>
+/* ---- v11: measured tab pill ---- */
+.hx .tabs{display:flex!important;grid-template-columns:none}
+.hx .tabs button{flex:0 0 auto;white-space:nowrap}
+.hx .tabs:before,.hx .tabs:has(#tT.on):before,.hx .tabs:has(#tF.on):before{left:0;width:var(--pw,0);transform:translateX(var(--px,0))!important;transition:transform .28s cubic-bezier(.3,1.1,.5,1),width .28s cubic-bezier(.3,1.1,.5,1);box-shadow:0 1px 6px color-mix(in srgb,var(--acc) 30%,transparent)!important}
+.hx .tabs.nopill:before{transition:none}
+/* ---- v11: swipe dates ---- */
+#games{touch-action:pan-y}.tw{touch-action:pan-x pan-y}
+#games.drag{transition:none}#games.snap{transition:transform .2s ease-out,opacity .2s ease-out}
+.swh{position:fixed;top:50%;z-index:30;width:42px;height:42px;margin-top:-21px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;font-size:22px;font-weight:900;opacity:0;pointer-events:none;transition:opacity .15s;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.swh.l{left:10px}.swh.r{right:10px}.swh.ready{transform:scale(1.12)}
+/* ---- v11: pull to refresh ---- */
+.ptr{position:fixed;left:50%;z-index:4;width:40px;height:40px;margin-left:-20px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#141c2e;border:1px solid #2a3654;box-shadow:0 6px 18px rgba(0,0,0,.35);opacity:0;pointer-events:none;font-size:22px}
+.ptr.go{transition:transform .25s ease-out,opacity .25s}.ptr.spin span{animation:spin .8s linear infinite}.ptr span{display:inline-block}
+.ptrmsg{position:fixed;left:50%;transform:translateX(-50%);z-index:4;background:#141c2e;border:1px solid #2a3654;color:#e8edf5;font-size:12px;font-weight:800;border-radius:999px;padding:5px 12px;opacity:0;transition:opacity .25s;pointer-events:none}
+.ptrmsg.on{opacity:1}
+html.light .ptr,html.light .ptrmsg{background:#fff;border-color:#d5dce8;color:#1c2536}
+/* ---- v11 add-ons ---- */
+#splash{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(180deg,#1d2a44,#0b0f17);transition:opacity .35s ease-out}
+#splash img{width:96px;height:96px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.45)}#splash b{color:#fff;font-size:22px;font-weight:900;letter-spacing:.3px}
+#splash.out{opacity:0;pointer-events:none}
+.offb{position:sticky;top:calc(var(--hh,60px));z-index:4;margin:8px auto 0;max-width:720px;width:calc(100% - 20px);background:#3a2a0b;border:1px solid #f59e0b;color:#fde7b0;font-size:12.5px;font-weight:700;border-radius:12px;padding:7px 12px;text-align:center}
+html.light .offb{background:#fff7e6;color:#7c4a03}
+.shb{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;border:1px solid #263247;background:rgba(255,255,255,.03);color:#cfd6e4;cursor:pointer;flex:none;padding:0}
+.watch .shb{margin-left:auto}.watch .shb+.wb.gp{margin-left:0}
+.lhead .shb,.rsel .shb{width:32px;height:32px;border-radius:50%;margin-left:6px}
+html.light .shb{border-color:#d5dce8;background:#fff;color:#3b475e}
+.grab{display:none}
+@media(max-width:1099px){.grab{display:block;flex:none;width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.28);margin:8px auto 0;cursor:grab}
+  html.light .grab{background:rgba(13,20,38,.22)}.ovp.dragging{transition:none!important;animation:none!important}.ovp.snapb{transition:transform .22s ease-out}}
+#hapl{position:fixed;left:-200px;top:0;opacity:0;pointer-events:none}
+</style></head><body><div id="splash" aria-hidden="true"><img src="apple-touch-icon.png" alt=""><b>NBA Live</b></div>
 <header class="hx"><div class="top">
 <div class="brand"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><defs><radialGradient id="bg" cx="35%" cy="30%"><stop offset="0" stop-color="#ffb070"/><stop offset=".55" stop-color="#ff6b1a"/><stop offset="1" stop-color="#c2410c"/></radialGradient></defs><circle cx="20" cy="20" r="17" fill="url(#bg)"/><g fill="none" stroke="#3b1606" stroke-width="1.6" stroke-linecap="round" opacity=".85"><path d="M3 20h34"/><path d="M20 3v34"/><path d="M8 8c5 4 5 20 0 24"/><path d="M32 8c-5 4-5 20 0 24"/></g></svg>
 <div class="bt"><h1>NBA <span>Live</span></h1><span class="chip">Wolves of Wallstreet</span></div></div>
@@ -741,7 +771,12 @@ function _renderLeague(F,ui){
 if(typeof module!=='undefined'){module.exports={renderTeam,pbpHTML,injReport,buildRecap,renderRecap,closeInfo,buildWaivers,renderWaivers,renderFantasyRoot,searchPlayers,renderSearchResults,renderPlayerCard,injPill,parseStandings,renderStandings,parseGame,sortGames,renderAll,renderSummary,renderCard,buildLeague,renderLeague,normName,fpts,espnFpts,setScoring:s=>SCORING=s}}
 else{
   const $=id=>document.getElementById(id),open=new Set(),openP=new Set(),sums={};let cur=ymdCT(new Date()),timer,lastOk=0,lastData=null,FDATA=null,FCACHE={},ftick=0;
-  const j=(u,o)=>fetch(u,o||{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()});
+  var DL_G=null,DL_M=null,T0=Date.now();
+const OFFOK=u=>!/players\/nba|\/stats\/nba\/player|\/projections\//.test(u);
+const j=(u,o)=>fetch(u,o||{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(t=>{const v=JSON.parse(t);
+  if(OFFOK(u)&&t.length<350000){try{localStorage.setItem('nbaOff:'+u,JSON.stringify({t:Date.now(),v:t}))}catch(e){}}
+  if(/scoreboard/.test(u))dispatchEvent(new CustomEvent('nba-online'));return v})
+  .catch(err=>{let c=null;try{c=JSON.parse(localStorage.getItem('nbaOff:'+u)||'null')}catch(e){}if(c){dispatchEvent(new CustomEvent('nba-offline',{detail:c.t}));return JSON.parse(c.v)}throw err});
   async function getPlayers(){const K='sleeperNbaPlayers3';try{const c=JSON.parse(localStorage.getItem(K)||'null');if(c&&Date.now()-c.t<864e5)return c.p}catch(e){}
     const d=await j(SL+'/players/nba',{}),p={};for(const k in d){const x=d[k];if(x.team||x.active)p[k]=[((x.first_name||'')+' '+(x.last_name||'')).trim(),(x.fantasy_positions||[x.position])[0]||'',x.team||'FA',(x.fantasy_positions||[x.position]).filter(Boolean).join('/'),x.injury_status||'']}
     try{localStorage.setItem(K,JSON.stringify({t:Date.now(),p}))}catch(e){}return p}
@@ -770,7 +805,7 @@ else{
       const dates=[...new Set(sched.filter(g=>g.week===wk).map(g=>g.date))],espnByDate={},today=ymdCT(new Date());
       await Promise.all(dates.map(d=>cached('e'+d,d===today?2e4:(d<today?36e5:6e5),()=>j(API+'scoreboard?dates='+d.replace(/-/g,''))).then(v=>espnByDate[d]=v).catch(()=>{})));
       const [statsPrev,season]=await Promise.all([wk>1?cached('sx'+(wk-1),36e5,()=>j(`${SLX}/stats/nba/${yr}/${wk-1}?season_type=regular`).catch(()=>[])):[],cached('sea'+yr,18e5,()=>j(`${SLX}/stats/nba/${yr}?season_type=regular`).catch(()=>[]))]);
-      RAW={state:st,league:lg,users:us,rosters:ro,matchups:mus,players:P,proj,stats,statsPrev,season,sched,espnByDate};rebuild();try{fCheck()}catch(e){};if(firstOpen&&UI.team){const k=FDATA.matchups.findIndex(m=>m.includes(+UI.team));if(k>=0)UI.matchup=k}firstOpen=false;
+      RAW={state:st,league:lg,users:us,rosters:ro,matchups:mus,players:P,proj,stats,statsPrev,season,sched,espnByDate};rebuild();try{fCheck()}catch(e){};if(firstOpen&&UI.team){const k=FDATA.matchups.findIndex(m=>m.includes(+UI.team));if(k>=0)UI.matchup=k}if(DL_M!=null&&FDATA){const k=FDATA.matchups.findIndex(m=>m.includes(+DL_M));if(k>=0)UI.matchup=k;DL_M=null}firstOpen=false;
     }catch(e){if(!FDATA)$('fantasy').innerHTML='<div class="msg">Fantasy data unavailable ('+esc(e.message)+'). Retrying automatically.</div>'}}
   const shift=d=>{const t=new Date(cur+'T12:00:00Z');t.setUTCDate(t.getUTCDate()+d);cur=t.toISOString().slice(0,10);load(true)};
   async function load(reset){
@@ -911,6 +946,90 @@ else{
   async function chkUpdate(){if(location.protocol==='file:'||!MYVER||Date.now()-lastChk<6e4)return;lastChk=Date.now();
     try{const t=await (await fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'})).text();const m=t.match(/name="app-version" content="([^"]+)"/);if(m&&m[1]!==MYVER)location.reload()}catch(e){}}
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)chkUpdate()});setTimeout(chkUpdate,4000);
+  /* ---- v11: measured tab pill ---- */
+  function pill(noAnim){const T=document.querySelector('.hx .tabs');if(!T)return;const b=T.querySelector('button.on');if(!b)return;
+    if(noAnim)T.classList.add('nopill');T.style.setProperty('--px',b.offsetLeft+'px');T.style.setProperty('--pw',b.offsetWidth+'px');if(noAnim)requestAnimationFrame(()=>requestAnimationFrame(()=>T.classList.remove('nopill')))}
+  const _st=showTab;showTab=function(id){_st(id);pill()};
+  pill(true);addEventListener('resize',()=>pill(true));addEventListener('orientationchange',()=>setTimeout(()=>pill(true),250));
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>pill(true));
+  if(typeof ResizeObserver!=='undefined'){const T=document.querySelector('.hx .tabs');if(T)new ResizeObserver(()=>pill(true)).observe(T)}
+  const _al=applyLook;applyLook=function(){_al();pill(true)};
+  /* ---- v11: gestures (date swipe + pull to refresh) ---- */
+  const swL=Object.assign(document.createElement('div'),{className:'swh l',textContent:'‹'}),swR=Object.assign(document.createElement('div'),{className:'swh r',textContent:'›'});
+  const ptr=Object.assign(document.createElement('div'),{className:'ptr',innerHTML:'<span>🏀</span>'}),pmsg=Object.assign(document.createElement('div'),{className:'ptrmsg'});
+  document.body.append(swL,swR,ptr,pmsg);
+  const G=$('games');let g=null;
+  const sheetOpen=()=>[...document.querySelectorAll('.ov')].some(o=>!o.classList.contains('hide'));
+  const curView=()=>{for(const k in TABS)if($(k).classList.contains('on'))return k;return 'tS'};
+  const hdrB=()=>{const h=document.querySelector('header');return h?h.getBoundingClientRect().bottom:60};
+  document.addEventListener('touchstart',e=>{if(e.touches.length!==1||sheetOpen()){g=null;return}const t=e.touches[0],tg=e.target;
+    g={x:t.clientX,y:t.clientY,dx:0,dy:0,mode:null,inGames:curView()==='tS'&&G.contains(tg)&&!tg.closest('.tw,input,select,textarea'),top:(window.scrollY||document.documentElement.scrollTop)<=0,inHdr:!!tg.closest('header')}},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!g)return;const t=e.touches[0];g.dx=t.clientX-g.x;g.dy=t.clientY-g.y;const ax=Math.abs(g.dx),ay=Math.abs(g.dy);
+    if(!g.mode){if(ax<10&&ay<10)return;
+      if(g.inGames&&ax>ay*1.8)g.mode='swipe';else if(g.top&&!g.inHdr&&g.dy>0&&ay>ax*1.5)g.mode='ptr';else{g.mode='none'}}
+    if(g.mode==='swipe'){e.preventDefault();const d=g.dx*.35;if(!RM){G.classList.add('drag');G.style.transform=`translate3d(${d}px,0,0)`}
+      const h=g.dx<0?swR:swL,o=g.dx<0?swL:swR;h.style.opacity=Math.min(1,ax/60);h.classList.toggle('ready',ax>50&&ax>ay*1.8);o.style.opacity=0}
+    else if(g.mode==='ptr'){if(g.dy<=0){ptr.style.opacity=0;return}e.preventDefault();const p=Math.min(110,g.dy*.5);ptr.classList.remove('go');
+      ptr.style.top=(hdrB()-30)+'px';ptr.style.opacity=Math.min(1,p/50);ptr.style.transform=`translate3d(0,${p}px,0)`;ptr.firstChild.style.transform=RM?'':`rotate(${p*4}deg)`;g.ready=p>=70*.5+20&&g.dy*.5>=70*.5}},{passive:false});
+  async function doRefresh(){ptr.classList.add('spin');const v=curView();try{if(v==='tT')await loadStandings(true);else await load(false)}catch(e){}
+    ptr.classList.remove('spin');ptr.classList.add('go');ptr.style.opacity=0;ptr.style.transform='translate3d(0,0,0)';
+    pmsg.textContent='Updated '+new Date().toLocaleTimeString('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'})+' '+TZL;pmsg.style.top=(hdrB()+12)+'px';pmsg.classList.add('on');setTimeout(()=>pmsg.classList.remove('on'),1400)}
+  function slideTo(dir){const out=dir>0?-40:40;if(RM){shift(dir);return}G.classList.remove('drag');G.classList.add('snap');G.style.transform=`translate3d(${out}%,0,0)`;G.style.opacity='0';
+    setTimeout(()=>{G.classList.remove('snap');G.style.transform=`translate3d(${-out}%,0,0)`;shift(dir);requestAnimationFrame(()=>{G.classList.add('snap');G.style.transform='';G.style.opacity='';setTimeout(()=>G.classList.remove('snap'),240)})},180)}
+  document.addEventListener('touchend',()=>{if(!g)return;const m=g.mode,ax=Math.abs(g.dx),ay=Math.abs(g.dy);swL.style.opacity=swR.style.opacity=0;
+    if(m==='swipe'){if(ax>50&&ax>ay*1.8)slideTo(g.dx<0?1:-1);else{G.classList.remove('drag');G.classList.add('snap');G.style.transform='';setTimeout(()=>G.classList.remove('snap'),220)}}
+    else if(m==='ptr'){if(g.dy*.5>=70*.5+0&&g.dy>=140)doRefresh();else{ptr.classList.add('go');ptr.style.opacity=0;ptr.style.transform='translate3d(0,0,0)'}}g=null});
+  document.addEventListener('touchcancel',()=>{if(g&&g.mode==='swipe'){G.style.transform=''}ptr.style.opacity=0;swL.style.opacity=swR.style.opacity=0;g=null});
+  /* ---- v11 add-ons ---- */
+  // haptics
+  const HL=document.createElement('label');HL.id='hapl';HL.innerHTML='<input type="checkbox" switch tabindex="-1" aria-hidden="true">';document.body.appendChild(HL);
+  function haptic(){try{if(navigator.vibrate&&navigator.vibrate(8))return;HL.click()}catch(e){}}
+  document.querySelectorAll('.hx .tabs button').forEach(b=>b.addEventListener('click',haptic));
+  const _doR=doRefresh;doRefresh=function(){haptic();return _doR()};
+  const _toast=toast;toast=function(t,s,id,ic){haptic();PEND++;badge();return _toast(t,s,id,ic)};
+  // badge
+  let PEND=0;function badge(){try{if(!navigator.setAppBadge)return;const n=(lastData?.events||[]).filter(e=>closeInfo(e)).length+PEND;
+    if(document.hidden&&n)navigator.setAppBadge(n);else if(!document.hidden){PEND=0;navigator.clearAppBadge&&navigator.clearAppBadge()}}catch(e){}}
+  document.addEventListener('visibilitychange',badge);
+  // share
+  const SHIC='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>';
+  const BASE=location.origin+location.pathname;
+  async function shareLink(url,title,text){haptic();try{if(navigator.share){await navigator.share({title,text,url});return}}catch(e){if(e&&e.name==='AbortError')return}
+    try{await navigator.clipboard.writeText(url);toast('Link copied',title,'','🔗')}catch(e){prompt('Copy this link',url)}}
+  function addShares(){document.querySelectorAll('#games .card .watch').forEach(w=>{if(w.querySelector('.shb'))return;const id=w.closest('.card').dataset.id,gp=w.querySelector('.gp');
+      const b=Object.assign(document.createElement('button'),{className:'shb',innerHTML:SHIC,title:'Share game'});b.setAttribute('aria-label','Share game');b.dataset.share='game:'+id;w.insertBefore(b,gp)});
+    const lh=document.querySelector('#fantasy .fsd .lhead,#fantasy .fview>.lhead');if(lh&&lh.querySelector('#backL')&&!lh.querySelector('.shb'))lh.insertAdjacentHTML('beforeend',`<button class="shb" data-share="matchup" title="Share matchup" aria-label="Share matchup">${SHIC}</button>`);
+    const rs=document.querySelector('#fantasy .rsel');if(rs&&!rs.querySelector('.shb'))rs.insertAdjacentHTML('beforeend',`<button class="shb" data-share="recap" title="Share recap" aria-label="Share recap">${SHIC}</button>`)}
+  const _pp=postPaint;postPaint=function(){_pp();try{addShares();if(DL_G){const c=document.querySelector(`.card[data-id="${DL_G}"]`);if(c){c.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'});DL_G=null}}hideSplash()}catch(e){}};
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-share]');if(!b)return;e.stopPropagation();const k=b.dataset.share;
+    if(k.startsWith('game:')){const id=k.slice(5),ev=(lastData?.events||[]).find(x=>x.id===id);const g=ev&&parseGame(ev);const nm=g?`${g.teams[0].abbr} @ ${g.teams[1].abbr}`:'NBA game';
+      shareLink(`${BASE}#date=${cur}&game=${id}`,nm+' · NBA Live',g&&g.state!=='pre'&&!SET.ns?`${g.teams[0].abbr} ${g.teams[0].score} – ${g.teams[1].abbr} ${g.teams[1].score} (${g.status})`:nm)}
+    else if(k==='matchup'&&FDATA&&UI.matchup!=null){const m=FDATA.matchups[UI.matchup],A=FDATA.teams[m[0]],B=FDATA.teams[m[1]];shareLink(`${BASE}#tab=fantasy&m=${m[0]}`,`${A.name} vs ${B?B.name:''} · Week ${FDATA.week}`,SET.ns?'':`${A.total.toFixed(2)} – ${B?B.total.toFixed(2):''}`)}
+    else if(k==='recap'&&FDATA){const wk=UI.rw||FDATA.week;shareLink(`${BASE}#tab=fantasy&recap=${wk}`,`${FDATA.league} · Week ${wk} recap`,'')}},true);
+  // splash
+  const SPL=$('splash');let splT=setTimeout(()=>hideSplash(),3500);function hideSplash(){if(!SPL||SPL.classList.contains('out'))return;if(!lastData&&!FDATA&&Date.now()-T0<3400)return;clearTimeout(splT);SPL.classList.add('out');setTimeout(()=>SPL.remove(),400)}
+  // offline banner
+  const OFB=document.createElement('div');OFB.className='offb hide';document.querySelector('header').after(OFB);
+  addEventListener('nba-offline',e=>{OFB.textContent='No connection — showing last update at '+new Date(e.detail).toLocaleString('en-US',{timeZone:TZ,month:'numeric',day:'numeric',hour:'numeric',minute:'2-digit'})+' '+TZL;OFB.classList.remove('hide')});
+  addEventListener('nba-online',()=>OFB.classList.add('hide'));
+  if(location.protocol==='https:'&&'serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+  // swipe-down-to-close sheets
+  const wideQ=matchMedia('(min-width:1100px)');
+  document.querySelectorAll('.ov .ovp').forEach(p=>{p.insertAdjacentHTML('afterbegin','<div class="grab" aria-hidden="true"></div>');let s=null;
+    p.addEventListener('touchstart',e=>{if(wideQ.matches||e.touches.length!==1)return;const b=p.querySelector('.ovb');const onGrab=!!e.target.closest('.grab,.ovh');
+      if(!onGrab&&b&&(b.scrollTop>0||!b.contains(e.target)))return;if(e.target.closest('.tw,input,select,textarea'))return;s={y:e.touches[0].clientY,x:e.touches[0].clientX,t:Date.now(),dy:0,lock:null}},{passive:true});
+    p.addEventListener('touchmove',e=>{if(!s)return;const dy=e.touches[0].clientY-s.y,dx=e.touches[0].clientX-s.x;
+      if(!s.lock){if(Math.abs(dy)<8&&Math.abs(dx)<8)return;s.lock=dy>0&&Math.abs(dy)>Math.abs(dx)*1.3?'y':'n'}if(s.lock!=='y'){s=null;return}
+      e.preventDefault();s.dy=Math.max(0,dy);p.classList.add('dragging');p.style.transform=`translate3d(0,${s.dy}px,0)`},{passive:false});
+    p.addEventListener('touchend',()=>{if(!s)return;const v=s.dy/Math.max(1,Date.now()-s.t),ov=p.closest('.ov');p.classList.remove('dragging');
+      if(s.dy>120||(v>.6&&s.dy>40)){haptic();if(!RM){p.classList.add('snapb');p.style.transform='translate3d(0,110%,0)';setTimeout(()=>{ov.classList.add('hide');p.classList.remove('snapb');p.style.transform=''},200)}else{ov.classList.add('hide');p.style.transform=''}}
+      else{p.classList.add('snapb');p.style.transform='';setTimeout(()=>p.classList.remove('snapb'),230)}s=null})});
+  // deep links / shortcuts
+  (function(){const P=new URLSearchParams(location.search),H=new URLSearchParams(location.hash.slice(1)),g=k=>H.get(k)||P.get(k);
+    const tab={scores:'tS',standings:'tT',fantasy:'tF'}[g('tab')];if(g('date')&&/^\d{4}-\d{2}-\d{2}$/.test(g('date'))){cur=g('date')}
+    if(g('game')){DL_G=g('game');open.add(DL_G);showTab('tS')}else if(tab)showTab(tab);
+    if(g('m')){DL_M=g('m');UI.sub='m';showTab('tF')}if(g('recap')){UI.sub='r';UI.rw=+g('recap')||null;showTab('tF')}
+    if(location.hash||P.get('tab'))history.replaceState(null,'',location.pathname)})();
   load(true);
 }
 </script></body></html>
