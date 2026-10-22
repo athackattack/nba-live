@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#0b0f17">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="NBA Live"><meta name="theme-color" id="tcol" content="#0b0f17"><meta name="color-scheme" content="dark light"><meta name="app-version" content="v10-20261022012105"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="manifest" href="manifest.json">
 <title>NBA Live · Wolves of Wallstreet</title>
 <style>
 :root{--bg:#0b0f17;--card:#141b27;--card2:#1b2433;--txt:#e8edf5;--mut:#8a96a8;--acc:#ff6b1a;--live:#ff3b47;--gold:#f5c542;--win:#fff}
@@ -410,6 +410,43 @@ html.light .nsbar,html.light .nsrev{background:#fff;border-color:#d5dce8;color:#
 html.light .hx h1,html.light .lhead b{background:linear-gradient(90deg,#111827,#24324d 55%,var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
 html.light .tabs button{border-color:transparent}html.light .srow select,html.light .sseg{background:#fff;color:#1c2536;border-color:#d5dce8}html.light .sacc button.on{border-color:#fff}
 html.light .hx .nav #today{color:var(--acc)}html.light .livepill{color:#dc2626}html.light .st .l{color:#dc2626}html.light .chip,html.light .lhead span,html.light .own{color:#0e7490}html.light .bx td.fp,html.light .vsb,html.light .mhf.fav .wpc{color:#c2410c}
+/* ---- v10: iPhone safe areas ---- */
+html{background:var(--bg)}body{padding:0 env(safe-area-inset-right) calc(40px + env(safe-area-inset-bottom)) env(safe-area-inset-left)!important;overscroll-behavior-y:none}
+header.hx{padding-top:calc(8px + env(safe-area-inset-top));padding-left:max(10px,env(safe-area-inset-left));padding-right:max(10px,env(safe-area-inset-right))}
+.ov{padding:calc(8px + env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+.ovp{max-height:calc(100vh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+.ovb{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.brand{overflow:hidden}.hx h1{overflow:hidden;text-overflow:ellipsis}
+@media(max-width:430px){.hx h1{font-size:15px}.tabs button{padding-left:9px;padding-right:9px}}
+/* ---- v10: responsive (tablet / desktop) ---- */
+@keyframes panelIn{from{opacity:0;transform:translate3d(40px,0,0)}to{opacity:1;transform:none}}
+@media(min-width:768px){
+  main{max-width:1180px;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  main .card.open{grid-column:1/-1}
+  #fantasy{max-width:1000px}#standings{max-width:1180px}
+  .ov{align-items:center}.ovp{max-width:640px;margin:0;max-height:86vh}
+  .wh,.wp{grid-template-columns:22px 40px 1fr 80px 80px 60px;gap:10px}.wh{grid-template-columns:1fr 80px 80px 60px;padding-left:94px}
+  .wfoot{max-width:1180px;margin-left:auto;margin-right:auto}
+}
+@media(min-width:1100px){
+  main{max-width:1440px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  #standings{max-width:1440px}#fantasy{max-width:1440px}.wfoot{max-width:1440px}
+  .ov{justify-content:flex-end;align-items:stretch;padding:0}
+  .ovp{max-width:520px;width:520px;height:100vh;max-height:100vh;border-radius:22px 0 0 22px;border-right:0}
+  .ov:not(.hide) .ovp{animation:panelIn .26s cubic-bezier(.2,.8,.2,1)}
+  .fsplit{display:grid;grid-template-columns:minmax(360px,460px) minmax(0,1fr);gap:20px;align-items:start}
+  .fsl{position:sticky;top:96px;max-height:calc(100vh - 110px);overflow:auto;padding:4px 6px 4px 2px}
+  .fsl .hint{display:none}.fsd #backL{visibility:hidden}
+  .fsl .mcard.sel{outline:2px solid var(--acc);outline-offset:2px}
+  .fsplit .ani{animation-name:fadeOnly}
+}
+@media(hover:hover) and (pointer:fine){
+  .card:hover{border-color:rgba(255,255,255,.16);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .tm:hover .nm b,.stn:hover{color:var(--acc)}
+  .sbtn:hover,.tabs button:hover{filter:brightness(1.15)}
+  .wb:hover{transform:translateY(-1px)}
+  html.light .card:hover{border-color:rgba(13,20,38,.18);box-shadow:0 12px 26px rgba(13,20,38,.12)}
+}
 </style></head><body>
 <header class="hx"><div class="top">
 <div class="brand"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><defs><radialGradient id="bg" cx="35%" cy="30%"><stop offset="0" stop-color="#ffb070"/><stop offset=".55" stop-color="#ff6b1a"/><stop offset="1" stop-color="#c2410c"/></radialGradient></defs><circle cx="20" cy="20" r="17" fill="url(#bg)"/><g fill="none" stroke="#3b1606" stroke-width="1.6" stroke-linecap="round" opacity=".85"><path d="M3 20h34"/><path d="M20 3v34"/><path d="M8 8c5 4 5 20 0 24"/><path d="M32 8c-5 4-5 20 0 24"/></g></svg>
@@ -662,7 +699,12 @@ function buildLeague(o){const {state:st,league:lg,users,rosters,matchups:mus,pla
   return {week:wk,weekDates,days:weekDays(weekDates),league:lg.name,status:lg.status,teams,matchups,P};
 }
 const fmtTip=iso=>iso?new Date(iso).toLocaleTimeString('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).replace(' ','').toLowerCase():'';
-function renderLeague(F,ui){
+var WIDEQ=typeof matchMedia!=='undefined'?matchMedia('(min-width:1100px)'):null;
+function renderLeague(F,ui){ui=ui||{};if(!WIDEQ||!WIDEQ.matches||!F.matchups.length)return _renderLeague(F,ui);
+  let mi=ui.matchup;if(mi==null||!F.matchups[mi]){const k=F.matchups.findIndex(m=>m.includes(+ui.team));mi=ui.matchup=k>=0?k:0}
+  const list=_renderLeague(F,Object.assign({},ui,{matchup:null})).replace(`class="mcard " data-m="${mi}"`,`class="mcard sel" data-m="${mi}"`);
+  return `<div class="fsplit"><div class="fsl">${list}</div><div class="fsd">${_renderLeague(F,ui)}</div></div>`}
+function _renderLeague(F,ui){
   ui=ui||{};const T=F.teams;if(!F.matchups.length)return `<div class="msg">No matchups this week${F.status!=='in_season'?' (league is '+esc(F.status)+')':''}.</div>`;
   const av=t=>`<div class="av" style="${t.avatar?`background-image:url(https://sleepercdn.com/avatars/thumbs/${esc(t.avatar)})`:''}"></div>`;
   const wp=(a,b)=>1/(1+Math.exp(-(a.proj-b.proj)/30));
@@ -813,7 +855,7 @@ else{
   const mqL=matchMedia('(prefers-color-scheme: light)'),mqR=matchMedia('(prefers-reduced-motion: reduce)');
   function applyLook(){const H=document.documentElement;H.classList.toggle('light',SET.theme==='light'||(SET.theme==='auto'&&mqL.matches));H.style.setProperty('--acc',SET.accent);
     H.classList.toggle('rm',!!SET.rm);H.classList.toggle('compact',!!SET.compact);H.classList.toggle('ns',!!SET.ns);RM=!!SET.rm||mqR.matches;
-    const m=document.querySelector('meta[name=theme-color]');if(m)m.content=H.classList.contains('light')?'#eef1f6':'#0b0f17'}
+    const m=document.querySelector('meta[name=theme-color]');if(m)m.content=H.classList.contains('light')?'#eef1f6':'#0b0f17';const sb=document.querySelector('meta[name=apple-mobile-web-app-status-bar-style]');if(sb)sb.content=H.classList.contains('light')?'default':'black-translucent'}
   mqL.addEventListener&&mqL.addEventListener('change',applyLook);mqR.addEventListener&&mqR.addEventListener('change',applyLook);
   function setTZ(){TZ=SET.tz==='auto'?(Intl.DateTimeFormat().resolvedOptions().timeZone||'America/Chicago'):SET.tz;TZL=tzLabel(TZ)}
   function sched(){clearTimeout(timer);if(!SET.pause)timer=setTimeout(()=>load(false),SET.rs*1000)}
@@ -863,6 +905,12 @@ else{
       if(FAS.key===key&&nl&&FAS.lead&&+FAS.lead!==+nl&&SET.fLead&&!SET.ns){const L=FDATA.teams[nl],O=nl===a.rid?b:a;fAlert(`Lead change: ${L.name} leads`,`${L.total.toFixed(2)} – ${O.total.toFixed(2)} vs ${O.name}`,'🔁')}if(nl)lead=nl}
     FAS={key,inj,lead};localStorage.setItem('nbaFAState',JSON.stringify(FAS))}
   applyLook();showTab(SET.tab);
+  if(WIDEQ&&WIDEQ.addEventListener)WIDEQ.addEventListener('change',()=>paint());
+  /* light update check */
+  const MYVER=(document.querySelector('meta[name=app-version]')||{}).content;let lastChk=0;
+  async function chkUpdate(){if(location.protocol==='file:'||!MYVER||Date.now()-lastChk<6e4)return;lastChk=Date.now();
+    try{const t=await (await fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'})).text();const m=t.match(/name="app-version" content="([^"]+)"/);if(m&&m[1]!==MYVER)location.reload()}catch(e){}}
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)chkUpdate()});setTimeout(chkUpdate,4000);
   load(true);
 }
 </script></body></html>
